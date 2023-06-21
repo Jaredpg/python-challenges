@@ -1,25 +1,36 @@
+import FlaskUI
 from openpyxl import Workbook
 from openpyxl import load_workbook
-import csv 
+from flask import Flask
 
-wb = Workbook()
-ws = wb.active
-ws['A1'] = "birthday"
-ws['B1'] = "fav colour"
-ws['C1'] = "favourite food"
-ws.append(["1st Jan 2008", "green", "pretzels"])
-ws.append(["1", "2", "3"])
+app = Flask(__name__)
 
-wb.save("FlaskUI.xlsx")
+@app.route("/")
+def hello():  
+    return render_template('index.html')
 
-#def open_workbook(path):
-    #workbook = load_workbook(filename=path)
-    #print(f"Workskeet names: {workbook.sheetnames}")
-    #sheet = workbook.active
-    #print(sheet)
-    #print(f"he title of the Worksheet is:{sheet.title}")
+@app.route("/home", methods=['GET'])
+def home(): 
+    return render_template('some_page.html')
 
-#if __name__ == "__main__":
-    #open_workbook("books.xlsx")
+
+#wb = Workbook()
+#ws = wb.active
+#ws['A1'] = "birthday"
+#ws['B1'] = "fav colour"
+#ws['C1'] = "favourite food"
+#ws.append(["1st Jan 2008", "green", "pretzels"])
+#ws.append(["1", "2", "3"])
+
+#wb.save("FlaskUI.xlsx")
+
+#workbook = load_workbook(filename="FlaskUI.xlsx")
+#workbook.sheetnames
+
+#sheet = workbook.active
+#sheet.title
+
+#wb.save("FlaskUI.xlsx")
+
 
 

@@ -1,23 +1,16 @@
-def main():
-    sentence = input("Please enter sentence(s): ")
-    num_words = len(sentence.split(' '))
+from flask import Flask  
+from flask import render_template
+from flaskwebgui import FlaskUI
 
-    counter = 0
-    for x in sentence:
-        if x in "!?.":
-            counter += 1
+app = Flask(__name__)
 
-    print("There are", counter, "sentences and", num_words, "words.")
+@app.route("/")
+def hello():  
+    return render_template('index.html')
 
-while True:
-    main()
-    if input("Repeat the program? (Y/N)").strip().upper() != 'Y':
-        break
+@app.route("/home", methods=['GET'])
+def home(): 
+    return render_template('some_page.html')
 
-import os
-
-# list files from a working directory
-print(os.listdir())
-
-# verify file exist
-print(os.path.isfile('sales.txt'))
+#if __name__ == "__main__":
+  #FlaskUI(app=app, server="flask").run()
