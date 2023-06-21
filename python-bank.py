@@ -1,5 +1,3 @@
-import datetime
-
 class bank_account:
     def __init__(self, value, interest_rate, compound_interest, year):
         self.value = value
@@ -14,15 +12,15 @@ class bank_account:
     def withdraw(self, amount):
         self.value -= amount
       
-        print(self.value) 
+        print("you have £" + str(self.value) + " you withdrawed £" + str(amount)) 
 
     def deposit(self, amount):
 
         self.value += amount
-        print(self.value)
+        print("you have £" + str(self.value) + " after your deposit")
 
     def total(self): 
-        print(self.value)
+        print("your total is: £" + str(self.value))
     
     def increment_year(self):
         if self.compound_interest:
@@ -30,12 +28,19 @@ class bank_account:
         else:
             self.value += self.interest_rate
         self.year += 1
-        print(self.year)
+        print("increment year: " + str(self.year))
             
 myBank = bank_account(20, 1.3, False, 2023)
 
-myBank.total()
+#print("bank account: " + str(myBank.total()))
+#print("you deposited: " + str(myBank.deposit(8)))
+#print("you withdrawed: ") + str(myBank.withdraw(5))
+#print("increment year: " + str(myBank.increment_year()))
+
+#unfinished
+
 myBank.deposit(8)
 myBank.withdraw(5)
 myBank.increment_year()
 myBank.total()
+
