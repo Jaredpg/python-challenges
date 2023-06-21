@@ -13,8 +13,15 @@ counter["a"]
 class OrderedCounter(Counter, OrderedDict):
  pass
 
-oc = OrderedCounter(ascii_letters)
+#oc = OrderedCounter(ascii_letters)
 
 list = (OrderedDict(counter))
 
-print(sorted(counter.most_common()))
+#print(sorted(counter.most_common()))
+sorted_list = (sorted(counter.most_common()))
+
+#print(sorted_list)
+
+a = sorted_list
+#[print(i, end=' ') for i in a]
+[print(i) for i in a]
