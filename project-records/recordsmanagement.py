@@ -14,9 +14,6 @@ while records_start:
     
     records_start = int(input(""))
 
-    if records_start == 4:
-        print("program has been exited")
-        break
     
     if records_start == 1:
         print("you have chosen to access records: ")
@@ -44,11 +41,11 @@ while records_start:
                     print("you have chosen to go back ")
                     print("")
                     records_start = True
-                if answer == 2:
+                elif answer == 2:
                     print("program exited")
                     break   
 
-            if record_option == 2:
+            elif record_option == 2:
                 print("accessing favourite foods records")
                 favfoods = open("project-records/favouritefoods.txt", "r")
                 print(favfoods.read())
@@ -58,11 +55,11 @@ while records_start:
                     print("you have chosen to go back ")
                     print("")
                     records_start = True
-                if answer == 2:
+                elif answer == 2:
                     print("program exited")
                     break
 
-            if record_option == 3:
+            elif record_option == 3:
                 print("accessing pet records")
                 pets = open("project-records/pets.txt", "r")
                 print(pets.read())
@@ -72,12 +69,12 @@ while records_start:
                     print("you have chosen to go back ")
                     print("")
                     records_start = True
-                if answer == 2:
+                elif answer == 2:
                     print("")
                     print("program exited")
                     break
 
-            if record_option == 4:
+            elif record_option == 4:
                 print("action cancelled")
                 print("")
                 answer = int(input("press 1 to go back or 2 to exit: "))
@@ -85,11 +82,11 @@ while records_start:
                     print("you have chosen to go back ")
                     print("")
                     records_start = True
-                if answer == 2:
+                elif answer == 2:
                     print("program exited")
                     break
 
-        if access_record == 2:
+        elif access_record == 2:
             print("accessing saved records...")
             print("")
             print("saved records not found")
@@ -99,12 +96,12 @@ while records_start:
                 print("you have chosen to go back ")
                 print("")
                 records_start = True
-            if answer == 2:
+            elif answer == 2:
                 print("program exited")
                 break
             #unfinished
             
-        if access_record == 3:
+        elif access_record == 3:
             print("action cancelled")
             print("")
             answer = int(input("press 1 to go back or 2 to exit: "))
@@ -112,12 +109,12 @@ while records_start:
                 print("you have chosen to go back ")
                 print("")
                 records_start = True
-            if answer == 2:
+            elif answer == 2:
                 print("program exited")
                 break
 
 
-    if records_start == 2:
+    elif records_start == 2:
         print("you have chosen to create records! ")
         print("1 - create a new file")
         print("2 - input user data to excel")
@@ -139,11 +136,11 @@ while records_start:
                 print("you have chosen to go back ")
                 print("")
                 records_start = True
-            if answer == 2:
+            elif answer == 2:
                 print("program exited")
                 break
 
-        if reply == 2:
+        elif reply == 2:
             name = input("write down your full name: ")
             birthday = input("write down your birthday: ")
             favcolour = input("write down your favourite colour: ")
@@ -162,10 +159,10 @@ while records_start:
             user_filename = input("insert file name: ")
             wb.save("project-records/" + user_filename + ".xlsx")
         
-        if reply == 3:
+        elif reply == 3:
             print("creation cancelled")
 
-    if records_start == 3:
+    elif records_start == 3:
         print("you have chosen to delete records: ")
         print("what record would you like to delete? ")
         print("1 - birthday")
@@ -180,32 +177,51 @@ while records_start:
             print("are you sure you would like to delete this file?")
             print("1 = yes, 2 = no")
 
-            answer = int(input(""))
-            if answer == 1:
-                print("your record has been deleted")
-            if answer == 2:
+            delete_option = int(input(""))
+            if delete_option == 1:
+                print("record is unable to be deleted")
+                print("")
+                answer = int(input("press 1 to go back or 2 to exit: "))
+                if answer == 1:
+                    print("you have chosen to go back ")
+                    print("")
+                    records_start = True
+                elif answer == 2:
+                    print("program exited")
+                    break
+                
+            elif delete_option == 2:
                 print("deletion has been cancelled")
+                print("")
+                answer = int(input("press 1 to go back or 2 to exit: "))
+                if answer == 1:
+                    print("you have chosen to go back ")
+                    print("")
+                    records_start = True
+                elif answer == 2:
+                    print("program exited")
+                    break
 
-        if delete_record == 2: 
+        elif delete_record == 2: 
             print("are you sure you would like to delete this file?")
             print("1 = yes, 2 = no")
             answer = int(input(""))
             if answer == 1:
-                print("your record has been deleted")
-            if answer == 2:
+                print("record is unable to be deleted")
+            elif answer == 2:
                 print("deletion has been cancelled")
     
 
-        if delete_record == 3: 
+        elif delete_record == 3: 
             print("are you sure you would like to delete this file?")
             print("1 = yes, 2 = no")
             answer = int(input(""))
             if answer == 1:
-                print("your record has been deleted")
-            if answer == 2:
+                print("record is unable to be deleted")
+            elif answer == 2:
                 print("deletion has been cancelled")
             
-        if delete_record == 4:
+        elif delete_record == 4:
             input_delete_record = input("input the file you would like to delete: ")
             print("looking for file...")
             deletion = os.remove("project-records/" + input_delete_record)
@@ -216,11 +232,11 @@ while records_start:
                 print("you have chosen to go back ")
                 print("")
                 records_start = True
-            if answer == 2:
+            elif answer == 2:
                 print("program exited")
                 break
 
-        if delete_record == 5:
+        elif delete_record == 5:
             print("deletion cancelled")
             print("")
             answer = int(input("press 1 to go back or 2 to exit: "))
@@ -228,7 +244,11 @@ while records_start:
                 print("you have chosen to go back ")
                 print("")
                 records_start = True
-            if answer == 2:
+            elif answer == 2:
                 print("program exited")
                 break
+
+    elif records_start == 4:
+        print("program has been exited")
+        break
         
