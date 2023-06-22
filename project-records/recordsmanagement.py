@@ -200,7 +200,6 @@ while records_start:
 
             input_delete_record = input("input the file you would like to delete: ")
             print("looking for file...")
-            print("file found!")
             print("are you sure you would like to delete this file?")
             print("1 = yes, 2 = no: ")
             delete_option = int(input(""))
