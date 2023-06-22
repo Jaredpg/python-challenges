@@ -15,6 +15,9 @@ def return_answer():
     elif answer == 2:
         print("program exited")
         sys.exit()
+    else:
+        print("error: answer has to be 1 or 2")
+        return_answer()
         
 def delete_option():
     print("are you sure you would like to delete this file?")
@@ -100,7 +103,6 @@ while records_start:
             print(saved_record.read())
             return_answer()
             
-            
         elif access_record == 3:
             print("action cancelled")
             return_answer()
@@ -136,7 +138,7 @@ while records_start:
             print("")
             print("name: " + name)
             print("birthday: " + birthday)
-            print("fovourite colour: " + favcolour)
+            print("favourite colour: " + favcolour)
 
             wb = Workbook()
             ws = wb.active
