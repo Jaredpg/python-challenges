@@ -1,4 +1,4 @@
-i have a dog
-his name is peanut
-he is 3 years old
-his dog breed is a pomeranian
+Pets: dog
+name of dog: peanut;
+age of dog: 3 years old
+breed of dog: pomeranian
