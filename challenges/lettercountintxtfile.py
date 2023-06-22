@@ -1,6 +1,6 @@
 from collections import Counter, OrderedDict
 
-words = open("words.txt", "r")
+words = open("challenges/words.txt", "r")
 counter = Counter(words.read().lower())
 
 sorted_list = (sorted(counter.most_common()))
