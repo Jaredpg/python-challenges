@@ -96,7 +96,10 @@ while records_start:
             print("")
             file_list = os.listdir("project-records")
             print("current files saved: ")
-            print(file_list)
+            print("")
+            for file in file_list:
+               print(file)
+            print("")
             access_saved_record = input("please input the record you would like to access: ")
             saved_record = open("project-records/" + access_saved_record, "r")
             print("")
@@ -190,7 +193,11 @@ while records_start:
         elif delete_record == 2:
             file_list = os.listdir("project-records")
             print("current files saved: ")
-            print(file_list)
+            print("")
+            for file in file_list:
+               print(file)
+            print("")
+
             input_delete_record = input("input the file you would like to delete: ")
             print("looking for file...")
             print("file found!")
