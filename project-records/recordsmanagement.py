@@ -21,12 +21,11 @@ def delete_option():
     print("1 = yes, 2 = no")
     delete_option = int(input(""))
     if delete_option == 1:
-        print("record is unable to be deleted")
+        print("pre-defined records are unable to be deleted")
         return_answer()        
     elif delete_option == 2:
         print("deletion has been cancelled")
         return_answer()
-
 
 while records_start:
     
