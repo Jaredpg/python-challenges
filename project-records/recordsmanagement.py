@@ -1,10 +1,35 @@
 import os
 from openpyxl import Workbook
+import sys
 
 print("press anything to start: ")
 records_start = input("")
 
+def return_answer():
+    print("")
+    answer = int(input("press 1 to go back or 2 to exit: "))
+    if answer == 1:
+        print("you have chosen to go back ")
+        print("")
+        records_start = True
+    elif answer == 2:
+        print("program exited")
+        sys.exit()
+        
+def delete_option():
+    print("are you sure you would like to delete this file?")
+    print("1 = yes, 2 = no")
+    delete_option = int(input(""))
+    if delete_option == 1:
+        print("record is unable to be deleted")
+        return_answer()        
+    elif delete_option == 2:
+        print("deletion has been cancelled")
+        return_answer()
+
+
 while records_start:
+    
     print("this is my record management project: ")
     print("1 - access records")
     print("2 - create records")
@@ -34,83 +59,36 @@ while records_start:
                 print("accessing birthday records")
                 birthday = open("project-records/birthday.txt", "r")
                 print(birthday.read())
-                print("")
-                answer = int(input("press 1 to go back or 2 to exit: "))
-                if answer == 1:
-                    print("you have chosen to go back ")
-                    print("")
-                    records_start = True
-                elif answer == 2:
-                    print("program exited")
-                    break   
+                return_answer()
 
             elif record_option == 2:
                 print("accessing favourite foods records")
                 favfoods = open("project-records/favouritefoods.txt", "r")
                 print(favfoods.read())
-                print("")
-                answer = int(input("press 1 to go back or 2 to exit: "))
-                if answer == 1:
-                    print("you have chosen to go back ")
-                    print("")
-                    records_start = True
-                elif answer == 2:
-                    print("program exited")
-                    break
+                return_answer()
 
             elif record_option == 3:
                 print("accessing pet records")
                 pets = open("project-records/pets.txt", "r")
                 print(pets.read())
-                print("")
-                answer = int(input("press 1 to go back or 2 to exit: "))
-                if answer == 1:
-                    print("you have chosen to go back ")
-                    print("")
-                    records_start = True
-                elif answer == 2:
-                    print("")
-                    print("program exited")
-                    break
+                return_answer()
 
             elif record_option == 4:
                 print("action cancelled")
-                print("")
-                answer = int(input("press 1 to go back or 2 to exit: "))
-                if answer == 1:
-                    print("you have chosen to go back ")
-                    print("")
-                    records_start = True
-                elif answer == 2:
-                    print("program exited")
-                    break
+                return_answer()
 
         elif access_record == 2:
             print("accessing saved records...")
             print("")
-            print("saved records not found")
-            print("")
-            answer = int(input("press 1 to go back or 2 to exit: "))
-            if answer == 1:
-                print("you have chosen to go back ")
-                print("")
-                records_start = True
-            elif answer == 2:
-                print("program exited")
-                break
+            access_saved_record = input("please input the record you would like to access: ")
+            saved_record = open("project-records/" + access_saved_record, "r")
+            print(saved_record.read())
+            return_answer()
             #unfinished
             
         elif access_record == 3:
             print("action cancelled")
-            print("")
-            answer = int(input("press 1 to go back or 2 to exit: "))
-            if answer == 1:
-                print("you have chosen to go back ")
-                print("")
-                records_start = True
-            elif answer == 2:
-                print("program exited")
-                break
+            return_answer()
 
 
     elif records_start == 2:
@@ -129,15 +107,7 @@ while records_start:
                 my_file.write(input('Your message: '))
 
             print("file has been saved into library")
-            print("")
-            answer = int(input("press 1 to go back or 2 to exit: "))
-            if answer == 1:
-                print("you have chosen to go back ")
-                print("")
-                records_start = True
-            elif answer == 2:
-                print("program exited")
-                break
+            return_answer()
 
         elif reply == 2:
             name = input("write down your full name: ")
@@ -157,9 +127,11 @@ while records_start:
             ws.append([name, birthday, favcolour])
             user_filename = input("insert file name: ")
             wb.save("project-records/" + user_filename + ".xlsx")
-        
+            return_answer()
+
         elif reply == 3:
             print("creation cancelled")
+            return_answer()
 
     elif records_start == 3:
         print("you have chosen to delete records: ")
@@ -173,79 +145,25 @@ while records_start:
         delete_record = int(input(""))
 
         if delete_record == 1: 
-            print("are you sure you would like to delete this file?")
-            print("1 = yes, 2 = no")
-
-            delete_option = int(input(""))
-            if delete_option == 1:
-                print("record is unable to be deleted")
-                print("")
-                answer = int(input("press 1 to go back or 2 to exit: "))
-                if answer == 1:
-                    print("you have chosen to go back ")
-                    print("")
-                    records_start = True
-                elif answer == 2:
-                    print("program exited")
-                    break
-                
-            elif delete_option == 2:
-                print("deletion has been cancelled")
-                print("")
-                answer = int(input("press 1 to go back or 2 to exit: "))
-                if answer == 1:
-                    print("you have chosen to go back ")
-                    print("")
-                    records_start = True
-                elif answer == 2:
-                    print("program exited")
-                    break
+            delete_option()
 
         elif delete_record == 2: 
-            print("are you sure you would like to delete this file?")
-            print("1 = yes, 2 = no")
-            answer = int(input(""))
-            if answer == 1:
-                print("record is unable to be deleted")
-            elif answer == 2:
-                print("deletion has been cancelled")
+            delete_option()
     
 
         elif delete_record == 3: 
-            print("are you sure you would like to delete this file?")
-            print("1 = yes, 2 = no")
-            answer = int(input(""))
-            if answer == 1:
-                print("record is unable to be deleted")
-            elif answer == 2:
-                print("deletion has been cancelled")
+            delete_option()
             
         elif delete_record == 4:
             input_delete_record = input("input the file you would like to delete: ")
             print("looking for file...")
             deletion = os.remove("project-records/" + input_delete_record)
             print("file has been deleted")
-            print("")
-            answer = int(input("press 1 to go back or 2 to exit: "))
-            if answer == 1:
-                print("you have chosen to go back ")
-                print("")
-                records_start = True
-            elif answer == 2:
-                print("program exited")
-                break
+            return_answer()
 
         elif delete_record == 5:
             print("deletion cancelled")
-            print("")
-            answer = int(input("press 1 to go back or 2 to exit: "))
-            if answer == 1:
-                print("you have chosen to go back ")
-                print("")
-                records_start = True
-            elif answer == 2:
-                print("program exited")
-                break
+            return_answer()
 
     elif records_start == 4:
         print("program has been exited")
