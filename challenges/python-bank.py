@@ -11,11 +11,9 @@ class bank_account:
 
     def withdraw(self, amount):
         self.value -= amount
-      
         print("you have £" + str(self.value) + " you withdrawed £" + str(amount)) 
 
     def deposit(self, amount):
-
         self.value += amount
         print("you have £" + str(self.value) + " after your deposit")
 
