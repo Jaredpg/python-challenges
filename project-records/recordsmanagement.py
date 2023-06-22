@@ -1,45 +1,49 @@
 
 import os 
 from openpyxl import Workbook
-
 print("press anything to start: ")
 x = input("")
 
-print("this is my record management project: ")
-print("1 - access records")
-print("2 - create records")
-print("3 - delete records")
-print("4 - exit program")
-
-x = int(input(""))
-if x == 1:
-    print("you have chosen to access records: ")
-    print("which records would you like to access")
-    print("1 - birthday")
-    print("2 - favourite food")
-    print("3 - pets")
-    print("4 - cancel action")
+while x:
+    print("this is my record management project: ")
+    print("1 - access records")
+    print("2 - create records")
+    print("3 - delete records")
+    print("4 - exit program")
+    
+    x = int(input(""))
+    if x == 1:
+        print("you have chosen to access records: ")
+        print("which records would you like to access")
+        print("1 - birthday")
+        print("2 - favourite food")
+        print("3 - pets")
+        print("4 - cancel action")
     y = int(input(""))
 
     if y == 1:
         print("accessing birthday records")
         birthday = open("project-records/birthday.txt", "r")
         print(birthday.read())
-        #answer = int(input("press 1 to go back or 2 to exit: "))
-        #if answer == 1:
-            #print("you have chosen to go back ")
-        #if answer == 2:
-            #print("program exited")
+        answer = int(input("press 1 to go back or 2 to exit: "))
+        if answer == 1:
+            print("you have chosen to go back ")
+            x = True
+        if answer == 2:
+            print("program exited")
+            break
 
     if y == 2:
         print("accessing favourite foods records")
         favfoods = open("project-records/favouritefoods.txt", "r")
         print(favfoods.read())
-        #answer = int(input("press 1 to go back or 2 to exit: "))
-        #if answer == 1:
-            #print("you have chosen to go back: ")
-        #if answer == 2:
-            #print("program exited")
+        answer = int(input("press 1 to go back or 2 to exit: "))
+        if answer == 1:
+            print("you have chosen to go back ")
+            x = True
+        if answer == 2:
+            print("program exited")
+            break
 
     if y == 3:
         print("accessing pet records")
@@ -47,12 +51,15 @@ if x == 1:
         print(pets.read())
         answer = int(input("press 1 to go back or 2 to exit: "))
         if answer == 1:
-            print("you have chosen to go back: ")
+            print("you have chosen to go back ")
+            x = True
         if answer == 2:
             print("program exited")
+            break
 
     if y == 4:
         print("action cancelled")
+        break
         
 if x == 2:
     print("you have chosen to create records! ")
@@ -77,6 +84,7 @@ if x == 2:
         favcolour = input("write down your favourite colour: ")
         print("data has been save")
 
+
         print("name: " + name)
         print("birthday: " + birthday)
         print("fovourite colour: " + favcolour)
@@ -88,9 +96,9 @@ if x == 2:
         ws['C1'] = "favourite colour"
         ws.append([name, birthday, favcolour])
         #ws.append(["1", "2", "3"])
-
-        wb.save("project-records/" + "test.xlsx")
-
+        user_filename = input("insert file name: ")
+        wb.save("project-records/" + user_filename + ".xlsx")
+        
 #workbook = load_workbook(filename="test.xlsx")
 #workbook.sheetnames
 
@@ -163,6 +171,7 @@ if x == 3:
 
 if x == 4:
     print("program has been exited")
+    
 
 
 
