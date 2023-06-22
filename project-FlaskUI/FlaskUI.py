@@ -5,13 +5,13 @@ from flask import Flask
 
 app = Flask(__name__)
 
-@app.route("/")
-def hello():  
-    return render_template('index.html')
+#@app.route("/")
+#def hello():  
+    #return render_template('index.html')
 
-@app.route("/home", methods=['GET'])
-def home(): 
-    return render_template('some_page.html')
+#@app.route("/home", methods=['GET'])
+#def home(): 
+    #return render_template('some_page.html')
 
 
 #wb = Workbook()
@@ -22,15 +22,15 @@ def home():
 #ws.append(["1st Jan 2008", "green", "pretzels"])
 #ws.append(["1", "2", "3"])
 
-#wb.save("FlaskUI.xlsx")
+#wb.save("test.xlsx")
 
-#workbook = load_workbook(filename="FlaskUI.xlsx")
+#workbook = load_workbook(filename="test.xlsx")
 #workbook.sheetnames
 
 #sheet = workbook.active
 #sheet.title
 
-#wb.save("FlaskUI.xlsx")
+#wb.save("test.xlsx")
 
 
 
