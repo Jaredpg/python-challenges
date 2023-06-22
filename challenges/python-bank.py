@@ -11,11 +11,11 @@ class bank_account:
 
     def withdraw(self, amount):
         self.value -= amount
-        print("you have £" + str(self.value) + " you withdrawed £" + str(amount)) 
+        print("you withdrawed £" + str(amount) + " you now have £" + str(self.value)) 
 
     def deposit(self, amount):
         self.value += amount
-        print("you have £" + str(self.value) + " after your deposit")
+        print("you deposited £" + str(amount) + " you now have £" + str(self.value))
 
     def total(self): 
         print("your total is: £" + str(self.value))
