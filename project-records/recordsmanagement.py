@@ -56,7 +56,6 @@ while records_start:
             print("2 - favourite food")
             print("3 - pets")
             print("4 - cancel action")
-            print("5 - view file list")
 
             record_option = int(input(""))
 
@@ -84,11 +83,7 @@ while records_start:
             elif record_option == 4:
                 print("action cancelled")
                 return_answer()
-            elif record_option == 5:
-                file_list = os.listdir("project-records")
-                print("")
-                print(file_list)
-                return_answer()
+            
             else:
                 print("error: that is not a option")
                 return_answer()
@@ -96,8 +91,12 @@ while records_start:
         elif access_record == 2:
             print("accessing saved records...")
             print("")
+            file_list = os.listdir("project-records")
+            print("current files saved: ")
+            print(file_list)
             access_saved_record = input("please input the record you would like to access: ")
             saved_record = open("project-records/" + access_saved_record, "r")
+            print("")
             print(saved_record.read())
             return_answer()
             
@@ -109,7 +108,6 @@ while records_start:
         else:
             print("error: that is not a option")
             return_answer()
-
 
     elif records_start == 2:
         print("you have chosen to create records! ")
@@ -161,31 +159,52 @@ while records_start:
         print("you have chosen to delete records: ")
         print("what record would you like to delete? ")
         print("")
-        print("1 - birthday")
-        print("2 - favourite food")
-        print("3 - pets")
-        print("4 - enter file")
-        print("5 - cancel deletion")
+        print("1 - pre-defined files")
+        print("2 - enter file")
+        print("3 - cancel deletion")
 
         delete_record = int(input(""))
 
         if delete_record == 1: 
-            delete_option()
+            print("")
+            print("1 - birthday")
+            print("2 - favourite foods")
+            print("3 - pets")
+            print("4 - cancel deletion")
+            predefined_delete = int(input(""))
+            if predefined_delete == 1:
+                delete_option()
+            elif predefined_delete == 2:
+                delete_option()    
+            elif predefined_delete == 3:
+                delete_option()
+            elif predefined_delete == 4:
+                print("deletion has been cancelled")
+                return_answer()
+            else:
+                print("error: that is not a option")
+                return_answer()
 
-        elif delete_record == 2: 
-            delete_option()
-    
-
-        elif delete_record == 3: 
-            delete_option()
-            
-        elif delete_record == 4:
+        elif delete_record == 2:
+            file_list = os.listdir("project-records")
+            print("current files saved: ")
+            print(file_list)
             input_delete_record = input("input the file you would like to delete: ")
             print("looking for file...")
+            print("file found!")
+            print("are you sure you would like to delete this file?")
+            print("1 = yes, 2 = no: ")
+            delete_option = int(input(""))
+        if delete_option == 1:
             deletion = os.remove("project-records/" + input_delete_record)
             print("file has been deleted")
             return_answer()
 
+            return_answer()        
+        elif delete_option == 2:
+            print("deletion has been cancelled")
+            return_answer()
+            
         elif delete_record == 5:
             print("deletion cancelled")
             return_answer()
