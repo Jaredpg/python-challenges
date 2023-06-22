@@ -21,15 +21,18 @@ def delete_option():
     print("1 = yes, 2 = no")
     delete_option = int(input(""))
     if delete_option == 1:
-        print("pre-defined records are unable to be deleted")
+        print("deletion rejected: please don't delete pre-defined records")
         return_answer()        
     elif delete_option == 2:
         print("deletion has been cancelled")
         return_answer()
 
+path = "/"
+
 while records_start:
     
     print("this is my record management project: ")
+    print("")
     print("1 - access records")
     print("2 - create records")
     print("3 - delete records")
@@ -40,40 +43,54 @@ while records_start:
     
     if records_start == 1:
         print("you have chosen to access records: ")
+        print("")
         print("1 - pre-defined records")
         print("2 - saved records")
         print("3 - cancel action")
         access_record = int(input(""))
 
         if access_record == 1:
-            print("which records would you like to access")
+            print("which records would you like to access...")
+            print("")
             print("1 - birthday")
             print("2 - favourite food")
             print("3 - pets")
             print("4 - cancel action")
+            print("5 - view file list")
 
             record_option = int(input(""))
 
             if record_option == 1:
-                print("accessing birthday records")
+                print("accessing birthday records...")
+                print("")
                 birthday = open("project-records/birthday.txt", "r")
                 print(birthday.read())
                 return_answer()
 
             elif record_option == 2:
-                print("accessing favourite foods records")
+                print("accessing favourite foods records...")
+                print("")
                 favfoods = open("project-records/favouritefoods.txt", "r")
                 print(favfoods.read())
                 return_answer()
 
             elif record_option == 3:
-                print("accessing pet records")
+                print("accessing pet records...")
+                print("")
                 pets = open("project-records/pets.txt", "r")
                 print(pets.read())
                 return_answer()
 
             elif record_option == 4:
                 print("action cancelled")
+                return_answer()
+            elif record_option == 5:
+                file_list = os.listdir("project-records")
+                print("")
+                print(file_list)
+                return_answer()
+            else:
+                print("error: that is not a option")
                 return_answer()
 
         elif access_record == 2:
@@ -83,15 +100,20 @@ while records_start:
             saved_record = open("project-records/" + access_saved_record, "r")
             print(saved_record.read())
             return_answer()
-            #unfinished
+            
             
         elif access_record == 3:
             print("action cancelled")
             return_answer()
 
+        else:
+            print("error: that is not a option")
+            return_answer()
+
 
     elif records_start == 2:
         print("you have chosen to create records! ")
+        print("")
         print("1 - create a new file")
         print("2 - input user data to excel")
         print("3 - cancel create")
@@ -131,10 +153,14 @@ while records_start:
         elif reply == 3:
             print("creation cancelled")
             return_answer()
+        else:
+            print("error: that is not a option")
+            return_answer()
 
     elif records_start == 3:
         print("you have chosen to delete records: ")
         print("what record would you like to delete? ")
+        print("")
         print("1 - birthday")
         print("2 - favourite food")
         print("3 - pets")
@@ -163,8 +189,13 @@ while records_start:
         elif delete_record == 5:
             print("deletion cancelled")
             return_answer()
+        else:
+            print("error: that is not a option")
+            return_answer()
 
     elif records_start == 4:
         print("program has been exited")
         break
-        
+    else:
+        print("error: that is not a option")
+        return_answer()
