@@ -1,16 +1,13 @@
-from flask import Flask  
-from flask import render_template
-    #from flaskwebgui import FlaskUI
+import os
 
-app = Flask(__name__)
+# Get the list of all files and directories
+# in the root directory
+path = "/"
+#dir_list = os.listdir(path)
 
-@app.route("/")
-def hello():  
-    return render_template('index.html')
+#print("project-records'", path, "' :")
+#print(dir_list)
+# print the list
 
-@app.route("/home", methods=['GET'])
-def home(): 
-    return render_template('some_page.html')
-
-#if __name__ == "__main__":
-  #FlaskUI(app=app, server="flask").run()
+file_list = os.listdir(path)
+print(file_list)
