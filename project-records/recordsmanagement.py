@@ -1,7 +1,6 @@
-
 import os
-from tracemalloc import start 
 from openpyxl import Workbook
+
 print("press anything to start: ")
 records_start = input("")
 
