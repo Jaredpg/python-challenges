@@ -118,7 +118,7 @@ while records_start:
         print("you have chosen to create records! ")
         print("")
         print("1 - create a new file")
-        print("2 - input user data to excel")
+        print("2 - input user data into xlsx file")
         print("3 - cancel create")
 
         reply = int(input(""))
