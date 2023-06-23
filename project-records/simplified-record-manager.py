@@ -75,6 +75,7 @@ if __name__ == "__main__":
             print(" 2 - create basic record")
             print(" 3 - input user data into xlsx file")
             print(" 4 - cancel create")
+            print("")
 
             reply = input("")
             if reply == "1":
