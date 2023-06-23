@@ -4,13 +4,16 @@ import sys
 
 
 print("press anything to start: ")
-records_start = input("")
-while True:
-    if records_start == "":
-        records_start = input("please enter something: ")
-        print("")
-    else:
-        break
+try:
+    records_start = input("")
+    while True:
+        if records_start == "":
+            records_start = input("please enter something: ")
+            print("")
+        else:
+            break
+except NameError:
+    print("Error: program ended")
 
 def return_answer():
     print("")
@@ -33,12 +36,12 @@ def record_make():
     file_name = "project-records/" + input('Filename with extension, e.g. example.txt: ')
     with open(file_name, 'w', encoding='utf-8') as my_file:
         r_name = input(" name: ")
-        r_age = int(input(" age: "))
+        r_age = input(" age: ")
         r_favourite_colour = input(" favourite colour: ")
         r_hobbies = input(" hobbies: ")
         r_pets = input(" pets: ")
         my_file.write(' name: ' + r_name)
-        my_file.write(' age: ' + str(r_age))
+        my_file.write(' age: ' + r_age)
         my_file.write(' favourite colour: ' + r_favourite_colour)
         my_file.write(' hobbies: ' + r_hobbies)
         my_file.write(' hobbies: ' + r_pets)
@@ -148,10 +151,14 @@ if __name__ == "__main__":
                     print(file)
                 print("")
                 access_saved_record = input("please input the record you would like to access: ")
-                saved_record = open("project-records/" + access_saved_record, "r")
-                print("")
-                print(saved_record.read())
-                return_answer()
+                try:
+                    saved_record = open("project-records/" + access_saved_record, "r")
+                    print("")
+                    print(saved_record.read())
+                    return_answer()
+                except NameError:
+                    ("Error: file could not be found")
+                    return_answer()
                 
             elif access_record == "3":
                 print("action cancelled")
@@ -161,7 +168,7 @@ if __name__ == "__main__":
                 print("error: that is not a option")
                 return_answer()
 
-        elif records_start == "delete records":
+        elif records_start == "2":
             print("you have chosen to create records! ")
             print("")
             print("1 - create a new file")
@@ -260,9 +267,13 @@ if __name__ == "__main__":
                 delete_option = input("")
                 
             if delete_option == "1":
-                deletion = os.remove("project-records/" + input_delete_record)
-                print("file has been deleted")
-                return_answer()
+                try:
+                    deletion = os.remove("project-records/" + input_delete_record)
+                    print("file has been deleted")
+                    return_answer()
+                except NameError:
+                    print("Error: file could not be found")
+                    return_answer()
     
             elif delete_option == "2":
                 print("deletion has been cancelled")
