@@ -65,7 +65,7 @@ def delete_option():
 
     #delete_file = 
 
-    #cancel_file = 
+    #cancel_file =
 
 #def pd_record():
     #print("accessing pre-defined record...")
@@ -295,7 +295,7 @@ if __name__ == "__main__":
             print("you have selected " + file_m)
             print("file manager is incomplete")
             print("")
-            break
+            return_answer()
 
         elif records_start == "5":
             print("program has been exited")
@@ -303,3 +303,4 @@ if __name__ == "__main__":
         else:
             print("error: that is not a option")
             return_answer()
+            records_start = True
