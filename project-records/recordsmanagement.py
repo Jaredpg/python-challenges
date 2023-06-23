@@ -181,7 +181,6 @@ if __name__ == "__main__":
                 print("write what you would like to save: ")
 
                 file_name = "project-records/" + input('Filename with extension, e.g. example.txt: ')
-
                 with open(file_name, 'w', encoding='utf-8') as my_file:
                     my_file.write(input('Your message: '))
 
@@ -284,18 +283,59 @@ if __name__ == "__main__":
                 return_answer()
 
         elif records_start == "4":
-            print("accessing file manager")
+            print("accessing file manager...")
             file_list = os.listdir("project-records")
             print("current files saved: ")
             print("")
             for file in file_list:
                 print(file)
-            
-            file_m = input("input file you would like to edit: ")
-            print("you have selected " + file_m)
-            print("file manager is incomplete")
             print("")
-            return_answer()
+            file_m = input("input file you would like to edit: ")
+            print("you have selected: " + file_m)
+            print("access, delete, cancel action")
+            file_decision = input("what would you like to do with this file?: ")
+
+            if file_decision == "access":
+                try:
+                    file_m = open("project-records/" + file_m, "r")
+                    print("")
+                    print(file_m.read())
+                    return_answer()
+                except NameError:
+                    ("Error: file could not be found")
+                    return_answer()
+            elif file_decision == "delete":
+                print("are you sure you would like to delete this file?")
+                print("1 = yes, 2 = no: ")
+                delete_option = input("")
+                
+                if delete_option == "1":
+                    try:
+                        os.remove("project-records/" + file_m)
+                        print("file has been deleted")
+                        return_answer()
+                    except NameError:
+                        print("Error: file could not be found")
+                        return_answer()
+        
+                elif delete_option == "2":
+                    print("deletion has been cancelled")
+                    return_answer()
+
+                else:
+                    print("error: that is not a option")
+                    return_answer()
+
+            elif file_decision =="cancel":
+                print("action has been cancelled")
+                return_answer
+
+            elif access_record == "3":
+                print("action cancelled")
+                return_answer()
+            else:
+                print("Error - that wasn't an option")
+                return_answer()
 
         elif records_start == "5":
             print("program has been exited")
