@@ -1,11 +1,16 @@
 import os
 from openpyxl import Workbook
 import sys
-try:
-    print("press anything to start: ")
-    records_start = input("")
-except NameError:
-    print("error")
+
+
+print("press anything to start: ")
+records_start = input("")
+while True:
+    if records_start == "":
+        records_start = input("please enter something: ")
+        print("")
+    else:
+        break
 
 def return_answer():
     print("")
@@ -17,10 +22,27 @@ def return_answer():
     elif answer == 2:
         print("program exited")
         sys.exit()
+    elif answer == "":
+        input("error - input 1 or 2: ")
     else:
         print("error: answer has to be 1 or 2")
         return_answer()
         
+def record_make():
+    file_name = "project-records/" + input('Filename with extension, e.g. example.txt: ')
+    with open(file_name, 'w', encoding='utf-8') as my_file:
+        r_name = input(" name: ")
+        r_age = int(input(" age: "))
+        r_favourite_colour = input(" favourite colour: ")
+        r_hobbies = input(" hobbies: ")
+        r_pets = input(" pets: ")
+        my_file.write(' name: ' + r_name)
+        my_file.write(' age: ' + str(r_age))
+        my_file.write(' favourite colour: ' + r_favourite_colour)
+        my_file.write(' hobbies: ' + r_hobbies)
+        my_file.write(' hobbies: ' + r_pets)
+        print("record has been saved into library")
+
 def delete_option():
     print("are you sure you would like to delete this file?")
     print("1 = yes, 2 = no")
@@ -31,6 +53,15 @@ def delete_option():
     elif delete_option == 2:
         print("deletion has been cancelled")
         return_answer()
+
+#class file_manager:
+    #def__init__(self, create_file, delete_file, cancel_file):
+
+    #create_file = 
+
+    #delete_file =
+
+    #cancel_file = 
 
 #def pd_record():
     #print("accessing pre-defined record...")
@@ -47,216 +78,233 @@ def delete_option():
     #print(pdr_name.read())
     #return_answer()
 
-path = "/"
-
-while records_start:
-    
-    print("this is my record management project: ")
-    print("")
-    print("1 - access records")
-    print("2 - create records")
-    print("3 - delete records")
-    print("4 - file manager")
-    print("5 - exit program")
-    
-    records_start = int(input(""))
-    if records_start == 1:
-        print("you have chosen to access records: ")
+if __name__ == "__main__":
+    path = "/"
+    while records_start:
+        print("this is my record management project: ")
         print("")
-        print("1 - pre-defined records")
-        print("2 - saved records")
-        print("3 - cancel action")
-        access_record = int(input(""))
+        print("1 - access records")
+        print("2 - create records")
+        print("3 - delete records")
+        print("4 - file manager")
+        print("5 - exit program")
 
-        if access_record == 1:
-            print("which records would you like to access...")
-            print("")
-            print("1 - birthday")
-            print("2 - favourite food")
-            print("3 - pets")
-            print("4 - cancel action")
-
-            record_option = int(input(""))
-
-            if record_option == 1:
-                print("accessing birthday records...")
+        records_start = int(input(""))
+        try:
+            if records_start == 1:
+                print("you have chosen to access records: ")
                 print("")
-                birthday = open("project-records/birthday.txt", "r")
-                print(birthday.read())
-                return_answer()
+                print("1 - pre-defined records")
+                print("2 - saved records")
+                print("3 - cancel action")
+                access_record = int(input(""))
 
-            elif record_option == 2:
-                print("accessing favourite foods records...")
+                if access_record == 1:
+                    print("which records would you like to access...")
+                    print("")
+                    print("1 - birthday")
+                    print("2 - favourite food")
+                    print("3 - pets")
+                    print("4 - cancel action")
+
+                    record_option = int(input(""))
+
+                    if record_option == 1:
+                        print("accessing birthday records...")
+                        print("")
+                        birthday = open("project-records/birthday.txt", "r")
+                        print(birthday.read())
+                        return_answer()
+
+                    elif record_option == 2:
+                        print("accessing favourite foods records...")
+                        print("")
+                        favfoods = open("project-records/favouritefoods.txt", "r")
+                        print(favfoods.read())
+                        return_answer()
+
+                    elif record_option == 3:
+                        print("accessing pet records...")
+                        print("")
+                        pets = open("project-records/pets.txt", "r")
+                        print(pets.read())
+                        return_answer()
+
+                    elif record_option == 4:
+                        print("action cancelled")
+                        return_answer()
+                    
+                    else:
+                        print("error: that is not a option")
+                        return_answer()
+
+                elif access_record == 2:
+                    print("accessing saved records...")
+                    print("")
+                    file_list = os.listdir("project-records")
+                    print("current files saved: ")
+                    print("")
+                    for file in file_list:
+                        print(file)
+                    print("")
+                    access_saved_record = input("please input the record you would like to access: ")
+                    saved_record = open("project-records/" + access_saved_record, "r")
+                    print("")
+                    print(saved_record.read())
+                    return_answer()
+                    
+                elif access_record == 3:
+                    print("action cancelled")
+                    return_answer()
+
+                else:
+                    print("error: that is not a option")
+                    return_answer()
+
+            elif records_start == 2:
+                print("you have chosen to create records! ")
                 print("")
-                favfoods = open("project-records/favouritefoods.txt", "r")
-                print(favfoods.read())
-                return_answer()
+                print("1 - create a new file")
+                print("2 - create basic record")
+                print("3 - input user data into xlsx file")
+                print("4 - cancel create")
 
-            elif record_option == 3:
-                print("accessing pet records...")
+                reply = int(input(""))
+                if reply == 1:
+                    print("write what you would like to save: ")
+
+                    file_name = "project-records/" + input('Filename with extension, e.g. example.txt: ')
+
+                    with open(file_name, 'w', encoding='utf-8') as my_file:
+                        my_file.write(input('Your message: '))
+
+                    print("file has been saved into library")
+                    return_answer()
+                
+                elif reply == 2:
+                    record_make()
+                    return_answer()
+
+                elif reply == 3:
+                    name = input("write down your full name: ")
+                    birthday = input("write down your birthday: ")
+                    favcolour = input("write down your favourite colour: ")
+                    hobby = input("write down a hobby: ")
+                    print("data has been save")
+                    print("")
+                    print("name: " + name)
+                    print("birthday: " + birthday)
+                    print("favourite colour: " + favcolour)
+                    print("hobby: " + hobby)
+
+                    wb = Workbook()
+                    ws = wb.active
+                    ws['A1'] = "name"
+                    ws['B1'] = "birthday"
+                    ws['C1'] = "favourite colour"
+                    ws['D1'] = "hobby"
+                    ws.append([name, birthday, favcolour, hobby])
+                    user_filename = input("insert file name: ")
+                    wb.save("project-records/" + user_filename + ".xlsx")
+                    return_answer()
+
+                elif reply == 4:
+                    print("creation cancelled")
+                    return_answer()
+                else:
+                    print("error: that is not a option")
+                    return_answer()
+
+            elif records_start == 3:
+                print("you have chosen to delete records: ")
+                print("what record would you like to delete? ")
                 print("")
-                pets = open("project-records/pets.txt", "r")
-                print(pets.read())
-                return_answer()
+                print("1 - pre-defined files")
+                print("2 - enter file")
+                print("3 - cancel deletion")
 
-            elif record_option == 4:
-                print("action cancelled")
-                return_answer()
-            
-            else:
-                print("error: that is not a option")
-                return_answer()
+                delete_record = int(input(""))
 
-        elif access_record == 2:
-            print("accessing saved records...")
-            print("")
-            file_list = os.listdir("project-records")
-            print("current files saved: ")
-            print("")
-            for file in file_list:
-               print(file)
-            print("")
-            access_saved_record = input("please input the record you would like to access: ")
-            saved_record = open("project-records/" + access_saved_record, "r")
-            print("")
-            print(saved_record.read())
-            return_answer()
-            
-        elif access_record == 3:
-            print("action cancelled")
-            return_answer()
+                if delete_record == 1: 
+                    print("")
+                    print("1 - birthday")
+                    print("2 - favourite foods")
+                    print("3 - pets")
+                    print("4 - cancel deletion")
+                    predefined_delete = int(input(""))
+                    if predefined_delete == 1:
+                        delete_option()
+                    elif predefined_delete == 2:
+                        delete_option()    
+                    elif predefined_delete == 3:
+                        delete_option()
+                    elif predefined_delete == 4:
+                        print("deletion has been cancelled")
+                        return_answer()
+                    else:
+                        print("error: that is not a option")
+                        return_answer()
 
-        else:
-            print("error: that is not a option")
-            return_answer()
+                elif delete_record == 2:
+                    file_list = os.listdir("project-records")
+                    print("current files saved: ")
+                    print("")
+                    for file in file_list:
+                        print(file)
+                    print("")
 
-    elif records_start == 2:
-        print("you have chosen to create records! ")
-        print("")
-        print("1 - create a new file")
-        print("2 - input user data into xlsx file")
-        print("3 - cancel create")
-
-        reply = int(input(""))
-        if reply == 1:
-            print("write what you would like to save: ")
-
-            file_name = "project-records/" + input('Filename with extension, e.g. example.txt: ')
-
-            with open(file_name, 'w', encoding='utf-8') as my_file:
-                my_file.write(input('Your message: '))
-
-            print("file has been saved into library")
-            return_answer()
-
-        elif reply == 2:
-            name = input("write down your full name: ")
-            birthday = input("write down your birthday: ")
-            favcolour = input("write down your favourite colour: ")
-            hobby = input("write down a hobby: ")
-            print("data has been save")
-            print("")
-            print("name: " + name)
-            print("birthday: " + birthday)
-            print("favourite colour: " + favcolour)
-            print("hobby: " + hobby)
-
-            wb = Workbook()
-            ws = wb.active
-            ws['A1'] = "name"
-            ws['B1'] = "birthday"
-            ws['C1'] = "favourite colour"
-            ws['D1'] = "hobby"
-            ws.append([name, birthday, favcolour, hobby])
-            user_filename = input("insert file name: ")
-            wb.save("project-records/" + user_filename + ".xlsx")
-            return_answer()
-
-        elif reply == 3:
-            print("creation cancelled")
-            return_answer()
-        else:
-            print("error: that is not a option")
-            return_answer()
-
-    elif records_start == 3:
-        print("you have chosen to delete records: ")
-        print("what record would you like to delete? ")
-        print("")
-        print("1 - pre-defined files")
-        print("2 - enter file")
-        print("3 - cancel deletion")
-
-        delete_record = int(input(""))
-
-        if delete_record == 1: 
-            print("")
-            print("1 - birthday")
-            print("2 - favourite foods")
-            print("3 - pets")
-            print("4 - cancel deletion")
-            predefined_delete = int(input(""))
-            if predefined_delete == 1:
-                delete_option()
-            elif predefined_delete == 2:
-                delete_option()    
-            elif predefined_delete == 3:
-                delete_option()
-            elif predefined_delete == 4:
-                print("deletion has been cancelled")
-                return_answer()
-            else:
-                print("error: that is not a option")
-                return_answer()
-
-        elif delete_record == 2:
-            file_list = os.listdir("project-records")
-            print("current files saved: ")
-            print("")
-            for file in file_list:
-               print(file)
-            print("")
-
-            input_delete_record = input("input the file you would like to delete: ")
-            print("looking for file...")
-            print("are you sure you would like to delete this file?")
-            print("1 = yes, 2 = no: ")
-            delete_option = int(input(""))
-        if delete_option == 1:
-            deletion = os.remove("project-records/" + input_delete_record)
-            print("file has been deleted")
-            return_answer()
-
-            return_answer()        
-        elif delete_option == 2:
-            print("deletion has been cancelled")
-            return_answer()
-            
-        elif delete_record == 5:
-            print("deletion cancelled")
-            return_answer()
-        else:
-            print("error: that is not a option")
-            return_answer()
-
-    elif records_start == 4:
-        print("accessing file manager")
-        file_list = os.listdir("project-records")
-        print("current files saved: ")
-        print("")
-        for file in file_list:
-            print(file)
-        print("")
+                    input_delete_record = input("input the file you would like to delete: ")
+                    print("looking for file...")
+                    print("are you sure you would like to delete this file?")
+                    print("1 = yes, 2 = no: ")
+                    delete_option = int(input(""))
+                    
+                if delete_option == 1:
+                    deletion = os.remove("project-records/" + input_delete_record)
+                    print("file has been deleted")
+                    return_answer()
         
-        file_m = input("input file you would like to edit: ")
-        print("you have selected " + file_m)
-        print("file manager is incomplete")
-        print("")
-        break
+                elif delete_option == 2:
+                    print("deletion has been cancelled")
+                    return_answer()
+                    
+                elif delete_record == 5:
+                    print("deletion cancelled")
+                    return_answer()
+                else:
+                    print("error: that is not a option")
+                    return_answer()
 
-    elif records_start == 5:
-        print("program has been exited")
-        break
-    else:
-        print("error: that is not a option")
-        return_answer()
+            elif records_start == 4:
+                print("accessing file manager")
+                file_list = os.listdir("project-records")
+                print("current files saved: ")
+                print("")
+                for file in file_list:
+                    print(file)
+                print("")
+                file_m = input("input file you would like to edit: ")
+                print("you have selected " + file_m)
+                print("accessing " + file_m)
+                print("")
+                file_m = open("project-records/" + file_m, "r")
+                print(file_m.read())
+                print("what would you like to do with this file?: ")
+                print("")
+                print("1 - access record")
+                print("2 - delete record")
+                print("3 - cancel action")
+                print("")
+                file_decision = int(input("what would you like to do with this file?: "))
+
+                return_answer()
+
+            elif records_start == 5:
+                print("program has been exited")
+                break
+            else:
+                print("error: that is not a option")
+                return_answer()
+        except NameError:
+            records_start = input("please enter something: ")
+            print("")
