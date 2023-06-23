@@ -1,9 +1,11 @@
 import os
 from openpyxl import Workbook
 import sys
-
-print("press anything to start: ")
-records_start = input("")
+try:
+    print("press anything to start: ")
+    records_start = input("")
+except NameError:
+    print("error")
 
 def return_answer():
     print("")
@@ -30,6 +32,21 @@ def delete_option():
         print("deletion has been cancelled")
         return_answer()
 
+#def pd_record():
+    #print("accessing pre-defined record...")
+    #print("")
+    #record_option = int(input())
+    #match record_option:
+        #case 1:
+            #pd_record_name = birthday
+        #case 2:
+            #pd_record_name = favfoods
+        #case 3:
+            #pd_record_name = pets
+    #pdr_name = open("project-records/" + pd_record_name + ".txt", "r")
+    #print(pdr_name.read())
+    #return_answer()
+
 path = "/"
 
 while records_start:
@@ -39,11 +56,10 @@ while records_start:
     print("1 - access records")
     print("2 - create records")
     print("3 - delete records")
-    print("4 - exit program")
+    print("4 - file manager")
+    print("5 - exit program")
     
     records_start = int(input(""))
-
-    
     if records_start == 1:
         print("you have chosen to access records: ")
         print("")
@@ -137,18 +153,21 @@ while records_start:
             name = input("write down your full name: ")
             birthday = input("write down your birthday: ")
             favcolour = input("write down your favourite colour: ")
+            hobby = input("write down a hobby: ")
             print("data has been save")
             print("")
             print("name: " + name)
             print("birthday: " + birthday)
             print("favourite colour: " + favcolour)
+            print("hobby: " + hobby)
 
             wb = Workbook()
             ws = wb.active
             ws['A1'] = "name"
             ws['B1'] = "birthday"
             ws['C1'] = "favourite colour"
-            ws.append([name, birthday, favcolour])
+            ws['D1'] = "hobby"
+            ws.append([name, birthday, favcolour, hobby])
             user_filename = input("insert file name: ")
             wb.save("project-records/" + user_filename + ".xlsx")
             return_answer()
@@ -221,6 +240,21 @@ while records_start:
             return_answer()
 
     elif records_start == 4:
+        print("accessing file manager")
+        file_list = os.listdir("project-records")
+        print("current files saved: ")
+        print("")
+        for file in file_list:
+            print(file)
+        print("")
+        
+        file_m = input("input file you would like to edit: ")
+        print("you have selected " + file_m)
+        print("file manager is incomplete")
+        print("")
+        break
+
+    elif records_start == 5:
         print("program has been exited")
         break
     else:
