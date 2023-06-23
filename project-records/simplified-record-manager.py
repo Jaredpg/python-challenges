@@ -65,6 +65,7 @@ if __name__ == "__main__":
         print("1 - create records")
         print("2 - file manager")
         print("3 - exit program")
+        print("")
         records_start = input("")
 
         if records_start == "1":
@@ -135,7 +136,7 @@ if __name__ == "__main__":
             elif file_m == False:
                 print("Error: you have not selected a file")
                 return_answer()
-                
+            print("")
             print("you have selected: " + file_m)
             print("access, delete, cancel")
             file_decision = input("what would you like to do with this file?: ")
