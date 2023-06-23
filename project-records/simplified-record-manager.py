@@ -62,19 +62,19 @@ if __name__ == "__main__":
     while records_start:
         print("this is my record management project: ")
         print("")
-        print("1 - create records")
-        print("2 - file manager")
-        print("3 - exit program")
+        print(" 1 - create records")
+        print(" 2 - file manager")
+        print(" 3 - exit program")
         print("")
         records_start = input("")
 
         if records_start == "1":
             print("you have chosen to create records! ")
             print("")
-            print("1 - create a new file")
-            print("2 - create basic record")
-            print("3 - input user data into xlsx file")
-            print("4 - cancel create")
+            print(" 1 - create a new file")
+            print(" 2 - create basic record")
+            print(" 3 - input user data into xlsx file")
+            print(" 4 - cancel create")
 
             reply = input("")
             if reply == "1":
@@ -98,10 +98,10 @@ if __name__ == "__main__":
                 hobby = input("write down a hobby: ")
                 print("data has been save")
                 print("")
-                print("name: " + name)
-                print("birthday: " + birthday)
-                print("favourite colour: " + favcolour)
-                print("hobby: " + hobby)
+                print(" name: " + name)
+                print(" birthday: " + birthday)
+                print(" favourite colour: " + favcolour)
+                print(" hobby: " + hobby)
 
                 wb = Workbook()
                 ws = wb.active
