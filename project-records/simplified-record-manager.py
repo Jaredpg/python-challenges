@@ -2,7 +2,7 @@ import os
 from openpyxl import Workbook
 import sys
 
-print("press anything to start: ")
+print("Enter something to start: ")
 try:
     records_start = input("")
     while True:
@@ -132,6 +132,10 @@ if __name__ == "__main__":
             if file_m == "":
                 print("Error: you have not selected a file")
                 return_answer()
+            elif file_m == False:
+                print("Error: you have not selected a file")
+                return_answer()
+                
             print("you have selected: " + file_m)
             print("access, delete, cancel")
             file_decision = input("what would you like to do with this file?: ")
