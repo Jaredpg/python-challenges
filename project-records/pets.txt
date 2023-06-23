@@ -1,4 +1,4 @@
-Pets: dog
-name of dog: peanut;
-age of dog: 3 years old
-breed of dog: pomeranian
+ Pets: dog
+ name of dog: peanut;
+ age of dog: 3 years old
+ breed of dog: pomeranian
